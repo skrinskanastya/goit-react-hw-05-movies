@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { fetchReviews } from 'helpers/api';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -54,3 +54,4 @@ export const Reviews = () => {
     </div>
   );
 };
+export default Reviews;

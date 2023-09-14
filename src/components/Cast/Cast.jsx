@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'helpers/api';
 import { useState, useEffect } from 'react';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
 const PLACEHOLDER = 'https://via.placeholder.com/182x273';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
@@ -62,3 +62,4 @@ export const Cast = () => {
     </div>
   );
 };
+export default Cast;

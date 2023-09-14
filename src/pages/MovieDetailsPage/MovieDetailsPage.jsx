@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'helpers/api';
-import { Loader } from 'components/Loader/Loader';
-import { Movie } from 'components/Movie/Movie';
+import Loader from 'components/Loader/Loader';
+import Movie from 'components/Movie/Movie';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -59,3 +59,4 @@ export const MovieDetailsPage = () => {
     </>
   );
 };
+export default MovieDetailsPage;

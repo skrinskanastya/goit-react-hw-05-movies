@@ -1,11 +1,11 @@
 import { React, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Form } from 'components/SearchForm/SearchForm';
+import Form from 'components/SearchForm/SearchForm';
 import { fetchMovies } from 'helpers/api';
-import { Loader } from 'components/Loader/Loader';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import Loader from 'components/Loader/Loader';
+import MoviesList from 'components/MoviesList/MoviesList';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
@@ -48,3 +48,4 @@ export const MoviesPage = () => {
     </div>
   );
 };
+export default MoviesPage;

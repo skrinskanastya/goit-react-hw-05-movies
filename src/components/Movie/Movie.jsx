@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
 const PLACEHOLDER = 'https://via.placeholder.com/182x273';
 
-export const Movie = ({ img, title, genres, overview, rating }) => {
+const Movie = ({ img, title, genres, overview, rating }) => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
@@ -60,3 +60,4 @@ export const Movie = ({ img, title, genres, overview, rating }) => {
     </>
   );
 };
+export default Movie;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
 
-export const Form = ({ setSearchParams }) => {
+const Form = ({ setSearchParams }) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -52,3 +52,4 @@ export const Form = ({ setSearchParams }) => {
     </form>
   );
 };
+export default Form;

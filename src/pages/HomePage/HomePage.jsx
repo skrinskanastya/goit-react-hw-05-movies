@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTrends } from '../../helpers/api';
-import { TrendMovies } from 'components/TrendMovies/TrendMovies';
-import { Loader } from '../../components/Loader/Loader';
+import TrendMovies from 'components/TrendMovies/TrendMovies';
+import Loader from '../../components/Loader/Loader';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [trends, setTrends] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -54,3 +54,4 @@ export const HomePage = () => {
     </div>
   );
 };
+export default HomePage;
