@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
+import { StyledInput, StyledBtn } from './SearchForm.styled';
 
 const Form = ({ setSearchParams }) => {
   const [query, setQuery] = useState('');
@@ -39,7 +40,7 @@ const Form = ({ setSearchParams }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <StyledInput
         type="text"
         placeholder="Enter title"
         value={query}
@@ -48,7 +49,7 @@ const Form = ({ setSearchParams }) => {
         autoComplete="off"
       />
 
-      <button type="submit">Search</button>
+      <StyledBtn type="submit">Search</StyledBtn>
     </form>
   );
 };

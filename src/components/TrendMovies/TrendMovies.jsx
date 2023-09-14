@@ -1,13 +1,14 @@
 import { useLocation, Link } from 'react-router-dom';
+import { StyledItem } from './TrendMovies.styled';
 
 const TrendMovies = ({ id, title }) => {
   const location = useLocation();
   return (
-    <li id={id}>
+    <StyledItem id={id}>
       <Link state={{ from: location }} to={`/movies/${id}`}>
         {title}
       </Link>
-    </li>
+    </StyledItem>
   );
 };
 export default TrendMovies;

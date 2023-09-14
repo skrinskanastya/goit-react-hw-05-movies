@@ -1,4 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { MovieWrapper, InfoWrapper, StyledGenresList } from './Movie.styled';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
 const PLACEHOLDER = 'https://via.placeholder.com/182x273';
@@ -13,7 +14,7 @@ const Movie = ({ img, title, genres, overview, rating }) => {
         <div>
           <Link to={backLinkHref}>Go back</Link>
         </div>
-        <div>
+        <MovieWrapper>
           <img
             src={`${
               img ? BASE_POSTER_URL + img : PLACEHOLDER + '?text=' + title
@@ -23,24 +24,24 @@ const Movie = ({ img, title, genres, overview, rating }) => {
           />
           <div>
             <h3>{title}</h3>
-            <p>Rating: {Math.round(rating)}</p>
+            <p>User Score: {Math.round(rating)}</p>
+            <h4>Overview</h4>
+            <p>{overview}</p>
             {genres && genres.length > 0 ? (
               <div>
                 <h4>Genres</h4>
-                <ul>
+                <StyledGenresList>
                   {genres.map((genre, index) => (
                     <li key={index}>{genre}</li>
                   ))}
-                </ul>
+                </StyledGenresList>
               </div>
             ) : (
               <p>No genres available</p>
             )}
-            <h4>Overview</h4>
-            <p>{overview}</p>
           </div>
-        </div>
-        <div>
+        </MovieWrapper>
+        <InfoWrapper>
           <h2>Additional information</h2>
           <ul>
             <li>
@@ -54,7 +55,7 @@ const Movie = ({ img, title, genres, overview, rating }) => {
               </Link>
             </li>
           </ul>
-        </div>
+        </InfoWrapper>
       </div>
       <Outlet />
     </>

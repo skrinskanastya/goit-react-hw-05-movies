@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchTrends } from '../../helpers/api';
 import TrendMovies from 'components/TrendMovies/TrendMovies';
 import Loader from '../../components/Loader/Loader';
+import { StyledList } from './HomePage.styled';
 
 const HomePage = () => {
   const [trends, setTrends] = useState([]);
@@ -37,7 +38,7 @@ const HomePage = () => {
           {error !== null ? (
             <p>Something went wrong. Error: {error}</p>
           ) : (
-            <ul>
+            <StyledList>
               {trends.map(movie => {
                 return (
                   <TrendMovies
@@ -47,7 +48,7 @@ const HomePage = () => {
                   />
                 );
               })}
-            </ul>
+            </StyledList>
           )}
         </>
       )}

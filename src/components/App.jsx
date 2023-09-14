@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Loader from './Loader/Loader';
-// import { StyledHeader } from './App.styled';
+import { StyledHeader, StyledNav, StyledLink } from './App.styled';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage'));
@@ -15,12 +15,12 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   return (
     <div>
-      <header>
-        <nav>
+      <StyledHeader>
+        <StyledNav>
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
-        </nav>
-      </header>
+        </StyledNav>
+      </StyledHeader>
       <main>
         <Suspense fallback={<Loader />}>
           <Routes>

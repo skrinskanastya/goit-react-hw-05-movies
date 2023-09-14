@@ -1,16 +1,16 @@
-import { ProgressBar } from 'react-loader-spinner';
+import { ColorRing } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
     <div>
-      <ProgressBar
+      <ColorRing
+        visible={true}
         height="80"
         width="80"
-        ariaLabel="progress-bar-loading"
+        ariaLabel="blocks-loading"
         wrapperStyle={{}}
-        wrapperClass="progress-bar-wrapper"
-        borderColor="#172CAF"
-        barColor="#51E5FF"
+        wrapperClass="blocks-wrapper"
+        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
       />
     </div>
   );

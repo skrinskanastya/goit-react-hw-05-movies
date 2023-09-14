@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { fetchCast } from 'helpers/api';
 import { useState, useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
+import { StyledList } from './Cast.styled';
 
 const BASE_POSTER_URL = 'https://image.tmdb.org/t/p/w500/';
 const PLACEHOLDER = 'https://via.placeholder.com/182x273';
@@ -40,7 +41,7 @@ const Cast = () => {
           ) : cast.length === 0 ? (
             <p>No results</p>
           ) : (
-            <ul>
+            <StyledList>
               {cast.map(item => (
                 <li key={item.id}>
                   <img
@@ -55,7 +56,7 @@ const Cast = () => {
                   <p>{item.name}</p>
                 </li>
               ))}
-            </ul>
+            </StyledList>
           )}
         </>
       )}
