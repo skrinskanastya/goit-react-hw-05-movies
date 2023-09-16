@@ -16,6 +16,7 @@ const HomePage = () => {
         setLoading(true);
         const trendsList = await fetchTrends();
         setTrends(trendsList);
+        // console.log(trends);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -43,6 +44,7 @@ const HomePage = () => {
                 return (
                   <TrendMovies
                     key={movie.id}
+                    // image={movie.img}
                     id={movie.id}
                     title={movie.title}
                   />
