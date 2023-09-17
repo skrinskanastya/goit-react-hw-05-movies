@@ -1,22 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 import { StyledInput, StyledBtn } from './SearchForm.styled';
 
 const Form = ({ setSearchParams }) => {
-  const [query, setQuery] = useState('');
   const { query: urlQuery } = useParams();
+  const [query, setQuery] = useState(urlQuery);
 
-  useEffect(() => {
-    if (urlQuery) {
-      setQuery(urlQuery);
-    }
-  }, [urlQuery]);
+  // useEffect(() => {
+  //   if (urlQuery) {
+  //     setQuery(urlQuery);
+  //   }
+  // }, [urlQuery]);
 
   const handleInput = evt => {
     const inputValue = evt.target.value;
     setQuery(inputValue);
-    localStorage.setItem('storedQuery', inputValue);
+    // localStorage.setItem('storedQuery', inputValue);
   };
 
   const handleSubmit = evt => {

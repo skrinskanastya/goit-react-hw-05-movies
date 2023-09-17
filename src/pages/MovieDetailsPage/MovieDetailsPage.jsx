@@ -36,25 +36,22 @@ const MovieDetailsPage = () => {
     fetchData();
   }, [movieId]);
 
+  if (error !== null) {
+    return <p>Something went wrong. Error: {error}</p>;
+  }
   return (
     <>
       {loading ? (
         <Loader />
       ) : (
-        <>
-          {error !== null ? (
-            <p>Something went wrong. Error: {error}</p>
-          ) : (
-            <Movie
-              id={movieDetails.id}
-              img={movieDetails.poster_path}
-              title={movieDetails.title}
-              genres={movieDetails.genresList}
-              overview={movieDetails.overview}
-              rating={movieDetails.vote_average}
-            />
-          )}
-        </>
+        <Movie
+          id={movieDetails.id}
+          img={movieDetails.poster_path}
+          title={movieDetails.title}
+          genres={movieDetails.genresList}
+          overview={movieDetails.overview}
+          rating={movieDetails.vote_average}
+        />
       )}
     </>
   );

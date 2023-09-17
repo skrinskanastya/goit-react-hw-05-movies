@@ -26,32 +26,30 @@ const Reviews = () => {
     fetchData();
   }, [movieId]);
 
-  if (loading === true) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
   if (error !== null) {
     return <p>Error, Something went wrong. : {error}</p>;
   }
   if (reviews.length === 0) {
     return <p>No results</p>;
   }
-
   return (
-    <ul>
-      {reviews.length !== 0 &&
-        reviews.map(item => {
-          return (
-            <li key={item.id}>
-              <p>Author: {item.author}</p>
-              <p>{item.content}</p>
-            </li>
-          );
-        })}
-    </ul>
+    <div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <ul>
+          {reviews.length !== 0 &&
+            reviews.map(item => {
+              return (
+                <li key={item.id}>
+                  <p>Author: {item.author}</p>
+                  <p>{item.content}</p>
+                </li>
+              );
+            })}
+        </ul>
+      )}
+    </div>
   );
 };
 export default Reviews;

@@ -29,7 +29,9 @@ const MoviesPage = () => {
     };
     fetchMovieByQuery();
   }, [searchParams]);
-
+  if (error !== null) {
+    return <p>Something went wrong. Error: {error}</p>;
+  }
   return (
     <div>
       <Form setSearchParams={setSearchParams} />
@@ -37,13 +39,7 @@ const MoviesPage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          {error !== null ? (
-            <p>Something went wrong. Error: {error}</p>
-          ) : (
-            movies.length > 0 && <MoviesList movies={movies} />
-          )}
-        </>
+        movies.length > 0 && <MoviesList movies={movies} />
       )}
     </div>
   );

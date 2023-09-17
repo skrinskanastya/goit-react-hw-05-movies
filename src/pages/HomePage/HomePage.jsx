@@ -27,21 +27,13 @@ const HomePage = () => {
     }
   }, [trends.length]);
 
-  if (loading === true) {
-    return (
-      <div>
-        <h1>Trending today</h1>
-        <Loader />
-      </div>
-    );
-  }
   if (error !== null) {
     return <p>Something went wrong. Error: {error}</p>;
   }
   return (
     <div>
       <h1>Trending today</h1>
-      <MoviesList movies={trends} />
+      {loading ? <Loader /> : <MoviesList movies={trends} />}
     </div>
   );
 };
