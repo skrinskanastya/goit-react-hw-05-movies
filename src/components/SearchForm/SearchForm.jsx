@@ -1,27 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Notiflix from 'notiflix';
 import { StyledInput, StyledBtn } from './SearchForm.styled';
 
 const Form = ({ setSearchParams }) => {
   const [query, setQuery] = useState('');
+  const { query: urlQuery } = useParams();
 
   useEffect(() => {
-    const storedQuery = localStorage.getItem('storedQuery');
-
-    if (storedQuery) {
-      setQuery(storedQuery);
+    if (urlQuery) {
+      setQuery(urlQuery);
     }
-
-    const handleBeforeUnload = () => {
-      localStorage.removeItem('storedQuery');
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+  }, [urlQuery]);
 
   const handleInput = evt => {
     const inputValue = evt.target.value;

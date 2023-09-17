@@ -26,32 +26,32 @@ const Reviews = () => {
     fetchData();
   }, [movieId]);
 
-  return (
-    <div>
-      {loading ? (
+  if (loading === true) {
+    return (
+      <div>
         <Loader />
-      ) : (
-        <>
-          {error !== null ? (
-            <p>Something went wrong. Error: {error}</p>
-          ) : reviews.length === 0 ? (
-            <p>No results</p>
-          ) : (
-            <ul>
-              {reviews.length !== 0 &&
-                reviews.map(item => {
-                  return (
-                    <li key={item.id}>
-                      <p>Author: {item.author}</p>
-                      <p>{item.content}</p>
-                    </li>
-                  );
-                })}
-            </ul>
-          )}
-        </>
-      )}
-    </div>
+      </div>
+    );
+  }
+  if (error !== null) {
+    return <p>Error, Something went wrong. : {error}</p>;
+  }
+  if (reviews.length === 0) {
+    return <p>No results</p>;
+  }
+
+  return (
+    <ul>
+      {reviews.length !== 0 &&
+        reviews.map(item => {
+          return (
+            <li key={item.id}>
+              <p>Author: {item.author}</p>
+              <p>{item.content}</p>
+            </li>
+          );
+        })}
+    </ul>
   );
 };
 export default Reviews;

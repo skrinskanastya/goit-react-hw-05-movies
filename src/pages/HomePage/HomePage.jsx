@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTrends } from '../../helpers/api';
-import TrendMovies from 'components/TrendMovies/TrendMovies';
 import Loader from '../../components/Loader/Loader';
-import { StyledList } from './HomePage.styled';
+import MoviesList from 'components/MoviesList/MoviesList';
 
 const HomePage = () => {
   const [trends, setTrends] = useState([]);
@@ -16,7 +15,6 @@ const HomePage = () => {
         setLoading(true);
         const trendsList = await fetchTrends();
         setTrends(trendsList);
-        // console.log(trends);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -29,32 +27,23 @@ const HomePage = () => {
     }
   }, [trends.length]);
 
+  if (loading === true) {
+    return (
+      <div>
+        <h1>Trending today</h1>
+        <Loader />
+      </div>
+    );
+  }
+  if (error !== null) {
+    return <p>Something went wrong. Error: {error}</p>;
+  }
   return (
     <div>
       <h1>Trending today</h1>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {error !== null ? (
-            <p>Something went wrong. Error: {error}</p>
-          ) : (
-            <StyledList>
-              {trends.map(movie => {
-                return (
-                  <TrendMovies
-                    key={movie.id}
-                    // image={movie.img}
-                    id={movie.id}
-                    title={movie.title}
-                  />
-                );
-              })}
-            </StyledList>
-          )}
-        </>
-      )}
+      <MoviesList movies={trends} />
     </div>
   );
 };
+
 export default HomePage;

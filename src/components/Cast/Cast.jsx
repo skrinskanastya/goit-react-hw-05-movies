@@ -30,36 +30,38 @@ const Cast = () => {
     fetchCastList();
   }, [movieId]);
 
+  if (loading === true) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+  if (error !== null) {
+    return <p>Error, Something went wrong. : {error}</p>;
+  }
+  if (cast.length === 0) {
+    return <p>No results</p>;
+  }
+
   return (
     <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {error !== null ? (
-            <p>Error, Something went wrong. : {error}</p>
-          ) : cast.length === 0 ? (
-            <p>No results</p>
-          ) : (
-            <StyledList>
-              {cast.map(item => (
-                <li key={item.id}>
-                  <img
-                    src={`${
-                      item.profile_path
-                        ? BASE_POSTER_URL + item.profile_path
-                        : PLACEHOLDER + '?text=' + item.name
-                    }`}
-                    alt={item.name}
-                    width="150"
-                  />
-                  <p>{item.name}</p>
-                </li>
-              ))}
-            </StyledList>
-          )}
-        </>
-      )}
+      <StyledList>
+        {cast.map(item => (
+          <li key={item.id}>
+            <img
+              src={`${
+                item.profile_path
+                  ? BASE_POSTER_URL + item.profile_path
+                  : PLACEHOLDER + '?text=' + item.name
+              }`}
+              alt={item.name}
+              width="150"
+            />
+            <p>{item.name}</p>
+          </li>
+        ))}
+      </StyledList>
     </div>
   );
 };
